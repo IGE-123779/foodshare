@@ -1,0 +1,87 @@
+
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 70px 8%;
+    gap: 50px;
+    background-color: #f8f7f0;
+}
+
+/* Texto */
+
+.hero-text {
+    flex: 1;
+}
+
+.hero-subtitle {
+    color: #829574;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.hero-text h1 {
+    font-size: 52px;
+    color: #354b38;
+    line-height: 1.2;
+    margin: 20px 0;
+}
+
+.hero-text h1 span {
+    color: #829574;
+}
+
+.hero-description {
+    color: #686e64;
+    font-size: 17px;
+    line-height: 1.7;
+    max-width: 480px;
+}
+
+/* Botões */
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.explore-button {
+    background-color: #718667;
+    color: white;
+    border: none;
+    padding: 14px 23px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.publish-button {
+    background-color: transparent;
+    color: #354b38;
+    border: 1px solid #718667;
+    padding: 14px 23px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.explore-button:hover {
+    background-color: #586e50;
+}
+
+.publish-button:hover {
+    background-color: #e9eddf;
+}
+
+/* Imagem */
+
+.hero-image {
+    flex: 1;
+}
+
+.hero-image img {
+    width: 100%;
+    height: 390px;
+    object-fit: cover;
+    border-radius: 18px;
+}

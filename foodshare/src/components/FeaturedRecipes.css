@@ -1,0 +1,44 @@
+
+.featured-section {
+    padding: 70px 8%;
+    background-color: #f3f3e9;
+}
+
+/* Título */
+
+.featured-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.featured-header p {
+    color: #829574;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+}
+
+.featured-header h2 {
+    color: #354b38;
+    font-size: 34px;
+    margin-bottom: 12px;
+}
+
+.featured-header span {
+    color: #777777;
+    font-size: 16px;
+}
+
+/* Cartões */
+
+.recipes-container {
+    display: flex;
+    gap: 25px;
+    margin-top: 35px;
+}
+
+.recipes-container > * {
+    flex: 1;
+    min-width: 0;
+}
