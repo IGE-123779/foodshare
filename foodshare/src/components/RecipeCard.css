@@ -1,67 +1,73 @@
-
 .recipe-card {
     background-color: white;
-    border-radius: 14px;
+    border: 1px solid var(--borda);
+    border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-    transition: transform 0.2s;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+    transition: transform 0.25s, box-shadow 0.25s;
 }
 
 .recipe-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-6px);
+    box-shadow: 0 14px 28px rgba(63, 107, 58, 0.18);
 }
 
 .recipe-card img {
     width: 100%;
-    height: 210px;
+    height: 220px;
     object-fit: cover;
+    display: block;
 }
 
 .recipe-info {
-    padding: 20px;
+    padding: 22px 20px 24px;
+    text-align: center;
 }
 
 .recipe-category {
-    color: #829574;
-    font-size: 13px;
-    font-weight: bold;
-    margin-bottom: 10px;
+    color: var(--verde);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin-bottom: 6px;
 }
 
 .recipe-info h3 {
-    color: #354b38;
-    font-size: 20px;
-    margin-bottom: 10px;
+    font-size: 26px;
+    margin-bottom: 6px;
 }
 
 .recipe-author {
-    color: #888888;
-    font-size: 14px;
+    color: var(--texto-suave);
+    font-size: 13px;
+}
+
+.like-button,
+.delete-button {
+    margin: 14px 4px 0;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background: white;
+    cursor: pointer;
 }
 
 .like-button {
-    margin-top: 10px;
-    padding: 6px 14px;
-    border: 1px solid #5f7a5a;
-    border-radius: 6px;
-    background: white;
-    color: #5f7a5a;
-    cursor: pointer;
+    border: 1px solid var(--verde-escuro);
+    color: var(--verde-escuro);
 }
 
 .like-button:hover {
-    background: #5f7a5a;
+    background: var(--verde-escuro);
     color: white;
 }
+
 .delete-button {
-    margin-top: 10px;
-    margin-left: 8px;
-    padding: 6px 14px;
     border: 1px solid #b00020;
-    border-radius: 6px;
-    background: white;
     color: #b00020;
-    cursor: pointer;
 }
 
 .delete-button:hover {

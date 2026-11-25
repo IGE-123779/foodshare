@@ -1,44 +1,34 @@
-
 .featured-section {
-    padding: 70px 8%;
-    background-color: #f3f3e9;
+    padding: 80px 8%;
+    background-color: white;
 }
-
-/* Título */
 
 .featured-header {
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 45px;
 }
 
 .featured-header p {
-    color: #829574;
+    color: var(--verde);
     font-size: 13px;
-    font-weight: bold;
-    letter-spacing: 2px;
-    margin-bottom: 12px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
 }
 
 .featured-header h2 {
-    color: #354b38;
-    font-size: 34px;
-    margin-bottom: 12px;
+    font-size: 44px;
+    margin: 0 0 12px;
 }
 
 .featured-header span {
-    color: #777777;
-    font-size: 16px;
+    color: var(--texto-suave);
+    font-size: 15px;
+    font-weight: 300;
 }
-
-/* Cartões */
 
 .recipes-container {
-    display: flex;
-    gap: 25px;
-    margin-top: 35px;
-}
-
-.recipes-container > * {
-    flex: 1;
-    min-width: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 30px;
 }
