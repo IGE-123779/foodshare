@@ -1,18 +1,30 @@
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import { ReceitasContext } from "../contexto/ReceitasContext.js";
 import { UtilizadorContext } from "../contexto/UtilizadorContext.js";
 import "./RecipeCard.css";
 
+const URL_RECIPE = "http://localhost:8000/receitas/api/recipe/";
+
 function RecipeCard(props) {
-    const [gostos, setGostos] = useState(0);
-    const { listaReceitas, setListaReceitas } = useContext(ReceitasContext);
+    const { getReceitas } = useContext(ReceitasContext);
     const { utilizadorAtual } = useContext(UtilizadorContext);
     const navigate = useNavigate();
 
+    const darGosto = () => {
+        const receitaAtualizada = { ...props.receita };
+        receitaAtualizada.gostos = receitaAtualizada.gostos + 1;
+
+        axios.put(URL_RECIPE + props.receita.id, receitaAtualizada).then(() => {
+            getReceitas();
+        });
+    };
+
     const apagarReceita = () => {
-        const receitasRestantes = listaReceitas.filter(receita => receita.id !== props.receita.id);
-        setListaReceitas(receitasRestantes);
+        axios.delete(URL_RECIPE + props.receita.id).then(() => {
+            getReceitas();
+        });
     };
 
     return (
@@ -35,11 +47,8 @@ function RecipeCard(props) {
                     Por {props.receita.autor}
                 </p>
 
-                <button
-                    className="like-button"
-                    onClick={() => setGostos(gostos + 1)}
-                >
-                    ♥ {gostos}
+                <button className="like-button" onClick={darGosto}>
+                    ♥ {props.receita.gostos}
                 </button>
 
                 <button

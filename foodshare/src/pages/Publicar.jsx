@@ -1,13 +1,16 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import { ReceitasContext } from "../contexto/ReceitasContext.js";
 import { UtilizadorContext } from "../contexto/UtilizadorContext.js";
 import "./Publicar.css";
 
+const URL_RECIPES = "http://localhost:8000/receitas/api/recipes/";
+
 function Publicar() {
-    const { listaReceitas, setListaReceitas } = useContext(ReceitasContext);
-    const navigate = useNavigate();
+    const { getReceitas } = useContext(ReceitasContext);
     const { utilizadorAtual } = useContext(UtilizadorContext);
+    const navigate = useNavigate();
 
     const [tituloReceita, setTituloReceita] = useState("");
     const [categoriaReceita, setCategoriaReceita] = useState("");
@@ -23,35 +26,37 @@ function Publicar() {
         let idVideo = "";
 
         if (linkVideoReceita.includes("youtu.be/")) {
-        idVideo = linkVideoReceita.split("youtu.be/")[1].split("?")[0];
+            idVideo = linkVideoReceita.split("youtu.be/")[1].split("?")[0];
         } else if (linkVideoReceita.includes("watch?v=")) {
-        idVideo = linkVideoReceita.split("watch?v=")[1].split("&")[0];
+            idVideo = linkVideoReceita.split("watch?v=")[1].split("&")[0];
         }
 
         const novaReceita = {
-            id: Date.now(),
             titulo: tituloReceita,
             categoria: categoriaReceita.toUpperCase(),
             autor: utilizadorAtual.nome,
             imagem: imagemReceita,
             descricao: descricaoReceita,
-            ingredientes: ingredientesReceita.split("\n").filter(linha => linha.trim() !== ""),
-            passos: passosReceita.split("\n").filter(linha => linha.trim() !== ""),
-            linkVideo: "https://www.youtube.com/embed/" + idVideo,
+            ingredientes: ingredientesReceita.split("\n").filter(linha => linha.trim() !== "").join("\n"),
+            passos: passosReceita.split("\n").filter(linha => linha.trim() !== "").join("\n"),
+            link_video: "https://www.youtube.com/embed/" + idVideo,
+            gostos: 0,
         };
 
-        setListaReceitas([...listaReceitas, novaReceita]);
-        navigate("/explorar");
+        axios.post(URL_RECIPES, novaReceita).then(() => {
+            getReceitas();
+            navigate("/explorar");
+        });
     };
 
     if (!utilizadorAtual) {
-    return (
-        <div className="publicar-container">
-            <h1>Publicar receita</h1>
-            <p>Tens de entrar na tua conta para publicar uma receita.</p>
-        </div>
-    );
-}
+        return (
+            <div className="publicar-container">
+                <h1>Publicar receita</h1>
+                <p>Tens de entrar na tua conta para publicar uma receita.</p>
+            </div>
+        );
+    }
 
     return (
         <div className="publicar-container">
